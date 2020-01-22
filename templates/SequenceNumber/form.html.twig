@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">input</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for child in form.children %}
+                {% if form_label(child) is not empty and 'token' not in form_label(child)  %}
+                <tr>
+                    <td>{{ form_row(child) }}</th>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            {{ form_row(form.save, { 'label': 'Save', 'attr' : {'type' : 'button', 'class' : 'btn btn-primary'} }) }}
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

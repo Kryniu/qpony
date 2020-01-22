@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">input</th>
+            <th scope="col">output</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for results in result %}
+                <tr>
+                    <td>{{ results.input }}</th>
+                    <td>{{ results.output }}</th>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
