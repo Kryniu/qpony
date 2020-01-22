@@ -29,10 +29,14 @@ class SequenceNumberCommand extends Command
         $this->setDescription('Command get max number from sequence');
         $this->addArgument('n', InputArgument::REQUIRED, 'Input');
     }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $number = $input->getArgument('n');
         $output->writeln('Input: ' . $number);
+        if (!is_numeric($number)) {
+            return 0;
+        }
         $maxNumber = $this->sequenceNumberService->getMaxNumber($number);
         $output->writeln('Output: ' . $maxNumber);
 
